@@ -75,19 +75,87 @@
     (2) edge node{} (0);
 \end{tikzpicture}
 \end{multicols}
-
 You can see that \texttt{ids[2] < low[3]}.
 
 \clearpage % Gives us a page break before the next section. Optional.
-\section*{Sample}
-\textbf{id}: \quad tags: \\
-\textbf{Par}
+\section*{Max Sum of Rectangle No Larger Than K }
+\textbf{id}: 363 \\
+\textbf{tags}: binary search\\
+\[
+\textbf{Par} \left\lbrace
 \begin{tabular}{ll}
-    \texttt{i}  & par1 \\
-    \texttt{j}  & par2 \\
-    \texttt{k}  & par3 \\
+    \texttt{mat}    & the original matrix\\
+    \texttt{arr}    & array of sums from column $i$ to $j$ of \texttt{mat}\\
+    \texttt{sums}   & ordered set of sums from begin to \texttt{arr[i]} \\
+    \texttt{cur}    & current sum of \texttt{arr[0$\cdots$i]} \\
+    \texttt{k}      & threshold for the result\\
 \end{tabular}
-\\ \textbf{Alg}
+\right.
+\]
+\\
+\textbf{Alg}
+\begin{enumerate}
+\item
+    Sub problem: Max sum of subarray of array $arr$ \\
+    Init \texttt{sums} with 0, $res$ with $-\infty$.\\
+    Iterate \texttt{arr}: at \texttt{i} iteration, \texttt{cur += arr[i]}. \\
+    Find the index of lower bound $lb$ of \texttt{cur-k} in \texttt{sums}. \\
+    If $lb$ is not the end of \texttt{sums}, we have
+        $res = \max(res, \texttt{cur - sums[lb]})$.
+
+\item
+    Then we use 
+\item
+    todo
+
+\end{enumerate}
+
+\clearpage
+\section*{Find Peak Element}
+\textbf{id}: 363 \\
+\textbf{tags}: binary search\\
+\[
+\textbf{Par} \left\lbrace
+\begin{tabular}{ll}
+    \texttt{nums}   & array, where \texttt{nums[i] != nums[j]} 
+                    if \texttt{i != j} \\
+    \texttt{l}      & left pos \\
+    \texttt{r}      & right pos \\
+    \texttt{m}      & middle = (left+right) / 2\\
+\end{tabular}
+\right.
+\]
+\\
+\textbf{Alg}
+\begin{enumerate}
+\item
+    init left, right \texttt{l = 0, r = len(nums)-1}
+\item
+    \texttt{while l < r: \\
+        \null\qquad m = (l+r) // 2\\
+        \null\qquad if (nums[m] > nums[m+1]: r = m\\
+        \null\qquad else: l = m+1}
+\item
+    the final \texttt{l} is the answer.
+
+\end{enumerate}
+
+
+
+\clearpage
+\section*{Sample}
+\textbf{id}: 363 \\
+\textbf{tags}: binary search\\
+\[
+\textbf{Par} \left\lbrace
+\begin{tabular}{ll}
+    \texttt{a}   & xxx \\
+    \texttt{b}    & xxx \\
+    \texttt{c}      & xxx \\
+\end{tabular}
+\right.
+\]
+\textbf{Alg}
 \begin{enumerate}
 \item
     todo
@@ -97,24 +165,6 @@ You can see that \texttt{ids[2] < low[3]}.
     todo
 
 \end{enumerate}
-\
-\section*{}
-
-
-
-\begin{comment}
-\begin{equation*}
-\begin{split}
-    \mathcal{L}(H(S), \lambda) 
-    &= \sum_{i=1}^9 p_i \log_3{\frac{1}{p_i}} + \lambda \left(\sum_{i=1}^9 p_i - 1 \right) \\
-    \pdv{\mathcal{L}}{p_i}
-    &= -\log_3{p_i} - \frac{1}{\ln{3}} + \lambda = 0 \quad i \in \{1,2,\dots,9\} \\
-    \pdv{\mathcal{L}}{\lambda}
-    &= \sum_{i=1}^9 p_i - 1 = 0 \\
-    \therefore p_i &= \frac{1}{9}
-\end{split}
-\end{equation*}
-\end{comment}
 
 
 \end{document}
